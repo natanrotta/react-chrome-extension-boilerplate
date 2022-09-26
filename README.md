@@ -1,6 +1,8 @@
 # GOOGLE CHROME EXTENSION BOILERPLATE
 
-Projeto criado com
+# Boilerplate de extensão do chrome com ReactJs usando a estratégia de página de injeção.
+
+## Projeto criado com
 
 ![HTML Badge](https://img.shields.io/badge/-HTML-orange)
 ![CSS Badge](https://img.shields.io/badge/-CSS-blue)
