@@ -47,11 +47,11 @@ yarn watch
 
 ## Adicionando extensão de aplicativo React ao Chrome
 
-### 1. No navegador Chrome, vá para a página chrome://extensions e ative o modo de desenvolvedor. Isso habilita a capacidade de instalar localmente uma extensão do Chrome.
+#### 1. No navegador Chrome, vá para a página chrome://extensions e ative o modo de desenvolvedor. Isso habilita a capacidade de instalar localmente uma extensão do Chrome.
 
-### 2. Agora clique no LOAD UNPACKED e navegue até [PROJECT_HOME]\build , Isso instalará o aplicativo React como uma extensão do Chrome.
+#### 2. Agora clique no LOAD UNPACKED e navegue até [PROJECT_HOME]\build , Isso instalará o aplicativo React como uma extensão do Chrome.
 
-### 3. Quando você for a qualquer site e clicar no ícone da extensão, a página injetada será alternada.
+#### 3. Quando você for a qualquer site e clicar no ícone da extensão, a página injetada será alternada.
 
 
 
