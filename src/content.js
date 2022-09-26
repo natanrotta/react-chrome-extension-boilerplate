@@ -34,25 +34,16 @@ app.id = "clint-extension";
 document.body.appendChild(app);
 ReactDOM.render(<Main />, app);
 
-app.style.display = "block";
-whatsappWeb.setAttribute(
-  "style",
-  "width: calc(100% - 400px); max-width: 100%;"
-);
+app.style.display = "none";
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.message === "clicked_browser_action") {
-    if (window.location.href.toString() === 'https://web.whatsapp.com/') {
+   
       toggle();
-    } else {
-      openWhatsappWeb()
-    }
+    
   }
 });
 
-const openWhatsappWeb = () => {
-  window.open('https://web.whatsapp.com/', '_blank')
-}
 
 const toggle = () => {
   if (app.style.display === "none") {

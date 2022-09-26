@@ -2,11 +2,13 @@
   "short_name": "Chrome Extension",
   "name": "Chrome Extension",
   "version": "1",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "background": {
-    "scripts": ["app/background.js"]
+    "service_worker": "background.js"
   },
-  "browser_action": {},
+  "action": {
+    "default_title": "Chrome Addon v3 Starter"
+  },
   "content_scripts" : [
     {
       "matches": [ "<all_urls>" ],
@@ -14,8 +16,13 @@
       "js": ["/static/js/content.js"]
     }
   ],
-  "web_accessible_resources":[
-    "/static/css/content.css", "/static/media/*"
+  "web_accessible_resources": [
+    {
+      "resources": ["/static/css/content.css", "/static/media/*"],
+      "matches": ["<all_urls>"]
+    }
   ],
-  "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; default-src 'self'"
+  }
 }
