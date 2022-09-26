@@ -27,23 +27,42 @@ class Main extends React.Component {
 }
 
 const app = document.createElement("div");
-app.id = "my-extension-root";
+const whatsappWeb = document.getElementById("app");
+
+app.id = "clint-extension";
 
 document.body.appendChild(app);
 ReactDOM.render(<Main />, app);
 
-app.style.display = "none";
+app.style.display = "block";
+whatsappWeb.setAttribute(
+  "style",
+  "width: calc(100% - 400px); max-width: 100%;"
+);
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.message === "clicked_browser_action") {
-    toggle();
+    if (window.location.href.toString() === 'https://web.whatsapp.com/') {
+      toggle();
+    } else {
+      openWhatsappWeb()
+    }
   }
 });
 
-function toggle() {
+const openWhatsappWeb = () => {
+  window.open('https://web.whatsapp.com/', '_blank')
+}
+
+const toggle = () => {
   if (app.style.display === "none") {
     app.style.display = "block";
+    whatsappWeb.setAttribute(
+      "style",
+      "width: calc(100% - 400px); max-width: 100%;"
+    );
   } else {
     app.style.display = "none";
+    whatsappWeb.setAttribute("style", "width: 100%; max-width: 100%;");
   }
-}
+};
