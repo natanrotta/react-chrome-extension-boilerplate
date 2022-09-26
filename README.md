@@ -10,7 +10,7 @@ Boilerplate de extensão do chrome com ReactJs usando a estratégia de página d
 ![CSS Badge](https://img.shields.io/badge/-CSS-blue)
 ![JavaScript Badge](https://img.shields.io/badge/-JavaScript-yellow)
 ![ReactJS Badge](https://img.shields.io/badge/-ReactJS-blue)
-![Chrome Badge](https://img.shields.io/badge/-ReactJS-red)
+![Chrome Badge](https://img.shields.io/badge/-Chrome-red)
 
 
 ## Primeira instalação
