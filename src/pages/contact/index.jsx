@@ -1,67 +1,38 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { ContactContext } from "../../context/ContactProvider";
 import { useMutationObserver } from "../../hooks";
+import { getCurrentPhone } from "../../service";
 
 const Contact = () => {
-  const [userPhone, setUserPhone] = useState(null);
-  const [isMutationObserverActive, setIsMutationObserverActive] =
-    useState(true);
+  const {
+    currentPhone,
+    setCurrentPhone
+  } = useContext(ContactContext);
 
+  const [isMutationObserverActive, setIsMutationObserverActive] = useState(true);
+
+  useEffect(() => {
+    handleStartMutationObserverClick()
+  }, [])
+  
   const handleStartMutationObserverClick = () => {
     setIsMutationObserverActive(true);
   };
 
-  const handleStopMutationObserverClick = () => {
-    setIsMutationObserverActive(false);
-  };
-
-  const isGroup = (phone) => {
-    return phone.includes("@");
-  };
-
-  const handle = () => {
-    const regex = "(?<=false_|true_)(.*)(?=@)";
-    const element = document.querySelector(
-      '[data-id*="false_"],[data-id*="true_"]'
-    );
-    if (element) {
-      const phone = element?.dataset?.id.toString().match(regex)[0];
-      if ((userPhone && userPhone === phone) || isGroup(phone)) {
-        return;
-      }
-      setUserPhone(phone);
-    }
+  const handlePhone = () => {
+    getCurrentPhone({ currentPhone, setCurrentPhone })
   };
 
   useMutationObserver("app", isMutationObserverActive, (mutations) => {
-    handle();
+    handlePhone();
   });
+
   return (
     <div>
       <p>
-        Contato: <b>{userPhone}</b>
+        Contato: <b>{currentPhone}</b>
       </p>
-      <button onClick={() => handle()}>FIND</button>
-
-      <button
-        type="primary"
-        className="primarybutton"
-        onClick={
-          isMutationObserverActive
-            ? handleStopMutationObserverClick
-            : handleStartMutationObserverClick
-        }
-      >
-        {isMutationObserverActive ? "Stop" : "Start"} MutationObserver
-      </button>
-
-      {isMutationObserverActive ? "on" : "off"}
-
-      {isMutationObserverActive && (
-        <p>
-          MutationObserver is now active! Open devtools and check the console
-        </p>
-      )}
     </div>
   );
 };

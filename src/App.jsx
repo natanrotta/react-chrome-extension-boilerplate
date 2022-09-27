@@ -1,12 +1,18 @@
-/*global chrome*/
-
 import React, { Component } from "react";
-import Contact from "./pages/contact";
+import { MemoryRouter } from "react-router-dom";
+import Header from "./components/Header";
+import { ContactProvider } from "./context/ContactProvider";
+import Routes from "./router/index";
 
 class App extends Component {
   render() {
     return (
-      <Contact />
+      <MemoryRouter>
+        <ContactProvider>
+          <Header />
+          <Routes />
+        </ContactProvider>
+      </MemoryRouter>
     );
   }
 }
