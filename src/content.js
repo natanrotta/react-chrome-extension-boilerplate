@@ -38,12 +38,9 @@ app.style.display = "none";
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.message === "clicked_browser_action") {
-   
-      toggle();
-    
+    toggle();
   }
 });
-
 
 const toggle = () => {
   if (app.style.display === "none") {
